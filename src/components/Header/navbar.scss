@@ -1,0 +1,125 @@
+@import "../../App.scss";
+
+.navbar-container {
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 5px rgba(107, 101, 101, 0.418);
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 2.5rem;
+
+  > img {
+    width: 127px;
+  }
+}
+
+#logo-small {
+  height: 50px;
+  width: 50px;
+}
+
+.nav-srch-cont-lg {
+  display: flex;
+  align-items: center;
+  padding: 7px 0;
+  border: 2px solid rgba($accent-color, 0.4);
+  border-radius: 7px;
+  width: 35%;
+  margin: 0 21px;
+
+  > input {
+    padding: 7px;
+    width: 100%;
+    border: none;
+    font-size: large;
+    background-color: transparent;
+  }
+  > input:focus {
+    outline: none;
+  }
+}
+.nav-srch-cont-lg-active {
+  border: 2px solid $accent-color;
+}
+
+.search-icon {
+  margin: 0 7px;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+
+  > * {
+    margin: 0 7px;
+  }
+}
+
+.nav-right-ic-cont {
+  display: flex;
+  align-items: center;
+  border: none;
+}
+
+.ham-btn {
+  display: flex;
+  align-items: center;
+}
+
+.ham-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  // align-items: center;
+
+  position: absolute;
+  right: 0;
+  top: 76px;
+  width: 200px;
+  padding: 12px;
+  z-index: 10;
+  max-height: calc(100dvh - $navbar-height);
+  overflow-y: auto;
+
+  > * {
+    width: 100%;
+    padding: 12px;
+  }
+}
+
+#nav-cart-btn {
+  border: none;
+  display: inline-flex;
+  align-items: flex-start;
+}
+
+.cart-count {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: rgba($accent-color, 0.4);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+
+  position: relative;
+  left: -17px;
+  top: -10px;
+  font-size: small;
+}
+
+@media screen and (max-width: 1020px) {
+  .nav-srch-cont-lg {
+    width: 75%;
+  }
+}

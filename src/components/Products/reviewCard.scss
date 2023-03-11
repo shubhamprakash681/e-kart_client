@@ -1,0 +1,51 @@
+@import "../../App.scss";
+
+.rev-card-cont {
+  display: inline-flex;
+  flex-direction: column;
+  margin: 20px;
+  padding: 21px;
+  width: 320px;
+  box-sizing: border-box;
+  box-shadow: 0 0 2px 2px rgba($accent-color, 0.7);
+  border-radius: 3px;
+}
+
+.rev-av-con {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  > div {
+    margin: 4px 0;
+  }
+}
+
+.rev-rating {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.review-comment {
+  margin-top: 20px;
+  height: 100px;
+  overflow-y: auto;
+  text-align: center;
+  border: 1px solid rgba($accent-color, 0.7);
+  border-radius: 3px;
+  padding: 12px;
+}
+
+.rev-delete-box {
+  display: flex;
+  justify-content: flex-end;
+
+  > span {
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  > span:hover {
+    transform: scale(1.1);
+  }
+}

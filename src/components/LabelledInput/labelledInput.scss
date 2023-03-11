@@ -1,0 +1,23 @@
+@import "../../App.scss";
+
+.labelled-input-wrapper {
+  position: relative;
+}
+
+.labelled-inp {
+  border: 1px solid $accent-color;
+  border-radius: 2px;
+  position: relative;
+  width: 200px;
+  margin: 10px;
+  line-height: 6ex;
+  padding: 0 6px;
+}
+
+.labelled-inp-label {
+  position: absolute;
+  top: 0.2ex;
+  z-index: 1;
+  left: 1.2em;
+  padding: 0 5px;
+}

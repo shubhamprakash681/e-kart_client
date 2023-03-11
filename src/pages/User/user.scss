@@ -1,0 +1,101 @@
+@import "../../App.scss";
+
+.user-cont {
+  height: calc(100% - $navbar-height);
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+}
+
+.form-header-user {
+  text-transform: capitalize;
+  padding: 8px;
+  border-bottom: 2px solid rgba($color: $accent-color, $alpha: 0.8);
+}
+
+.fgt-form-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+  justify-content: center;
+  border: none;
+
+  > a {
+    transform: translateX(-35px);
+  }
+
+  > span {
+    margin-bottom: 0;
+    transform: translateX(-10px);
+  }
+}
+.fgt-form-header:active {
+  border: none;
+}
+
+.user-prof-cont {
+  height: calc(100% - $navbar-height);
+}
+
+.user-prof-det {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5vmin;
+  overflow-x: auto;
+
+  > * {
+    margin: 2vh 0;
+  }
+}
+
+.det-box {
+  min-width: 400px;
+  max-width: 80%;
+  margin: 5vh auto;
+  box-shadow: 0 0 1px 1px gray;
+
+  > * {
+    margin: 2vh 0;
+  }
+}
+
+.user-prof-com {
+  width: 100%;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  > h2 {
+    display: inline;
+  }
+  > span {
+    margin-left: 12px;
+    font-size: 1.3rem;
+    overflow-x: auto;
+  }
+}
+
+.prof-btn-cont {
+  min-width: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 477px) {
+  .user-prof-det {
+    padding: 0;
+  }
+
+  .prof-btn-cont {
+    flex-direction: column;
+
+    > * {
+      margin: 3px 0;
+    }
+  }
+}

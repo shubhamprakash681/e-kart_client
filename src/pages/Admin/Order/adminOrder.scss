@@ -1,0 +1,27 @@
+@import "../../../App.scss";
+
+.all-orders-admin-cont {
+  height: calc(100dvh - $navbar-height);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.2rem;
+
+  > div {
+    overflow-x: auto;
+    width: 100%;
+    margin-top: 30px;
+  }
+}
+
+.process-option {
+  width: 330px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  > select {
+    color: $accent-color;
+    width: 200px;
+  }
+}

@@ -1,0 +1,15 @@
+@import "../../../App.scss";
+
+.all-users-cont {
+  height: calc(100dvh - $navbar-height);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.2rem;
+
+  > div {
+    overflow-x: auto;
+    width: 100%;
+    margin-top: 30px;
+  }
+}

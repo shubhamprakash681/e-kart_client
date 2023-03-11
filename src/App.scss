@@ -1,0 +1,277 @@
+@import url("https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&display=swap");
+
+// variables
+$accent-color: rgb(173, 7, 96);
+$bgn-col-dark: rgb(26, 24, 27);
+$bgn-col-light: rgb(247, 247, 247);
+$bgn-col-dark-sec: rgba($accent-color, 0.4);
+$bgn-col-light-sec: rgba($accent-color, 0.3);
+$prim-col-dark: white;
+$prim-col-light: black;
+$scroll-bar-back: rgba($accent-color, 0.1);
+$scroll-bar-front: grey;
+$navbar-height: 78px;
+
+// #e58585  hsl(0,65%,71%)rgb(229,133,133)
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+  font-family: "Golos Text", sans-serif;
+  // border: 1px solid red;
+
+  scrollbar-width: thin;
+  scrollbar-color: $scroll-bar-front $scroll-bar-front;
+
+  ::-webkit-scrollbar {
+    width: 2px;
+    height: 2px;
+  }
+  ::-webkit-scrollbar-track {
+    background: $scroll-bar-back;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: $scroll-bar-front;
+    border-radius: 20px;
+    border: 5px solid $scroll-bar-back;
+  }
+}
+
+.app-container {
+  height: 100dvh;
+  box-sizing: border-box;
+  overflow-y: auto;
+  // overflow: auto;
+}
+
+.dark {
+  background-color: $bgn-col-dark;
+  color: $prim-col-dark;
+}
+.dark-col-only {
+  color: $prim-col-dark;
+}
+.light {
+  background-color: $bgn-col-light;
+  color: $prim-col-light;
+}
+.light-col-only {
+  color: $prim-col-light;
+}
+.dark-sec {
+  background-color: $bgn-col-dark-sec;
+}
+.light-sec {
+  background-color: $bgn-col-light-sec;
+}
+
+.link {
+  text-decoration: none;
+  color: initial;
+  cursor: pointer;
+}
+
+.btn-solid,
+.btn-ghost,
+.btn-outline,
+.btn-link {
+  cursor: pointer;
+  font-size: large;
+  padding: 7px;
+  border-radius: 5px;
+  text-align: center;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+}
+
+.btn-solid {
+  color: $prim-col-dark;
+  background-color: rgba($accent-color, 0.85);
+  border: none;
+}
+.btn-solid:hover {
+  background-color: $accent-color;
+}
+.btn-outline {
+  background-color: transparent;
+  color: $accent-color;
+  border: 1px solid $accent-color;
+}
+.btn-ghost,
+.btn-link {
+  color: $accent-color;
+  background-color: transparent;
+  border: none;
+  text-decoration: none;
+}
+
+.btn-outline:hover,
+.btn-ghost:hover {
+  background-color: rgba($color: $accent-color, $alpha: 0.2);
+}
+.btn-link:hover {
+  text-decoration: underline;
+}
+
+input:focus {
+  outline-color: $accent-color;
+}
+
+.multi-range-slider {
+  box-shadow: none;
+  border: none;
+}
+
+// custom file input
+.custom-file-input {
+  cursor: pointer;
+}
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.cus-select {
+  width: 100%;
+  border: none;
+  box-sizing: border-box;
+  padding: 12px;
+}
+.cus-select:focus {
+  outline: none;
+}
+.cus-select-options {
+  padding: 12px;
+  background-color: white;
+  color: black;
+}
+
+// react-paginate styling
+#ract-paginate-holder {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  overflow-x: hidden;
+}
+.react-custom-paginate {
+  max-width: 100%;
+  display: flex;
+  list-style: none;
+  border: 1.4px solid $accent-color;
+  cursor: pointer;
+  border-radius: 4px;
+  overflow: hidden;
+
+  > li {
+    padding: 0.8rem 0;
+  }
+  > li > a {
+    padding: 0.8rem;
+    border: 1px solid rgba($accent-color, 0.3);
+  }
+
+  > li:hover {
+    background-color: rgba($accent-color, 0.3);
+  }
+}
+.react-paginate-selected-page {
+  background-color: rgba($accent-color, 0.3);
+}
+
+// slider
+.slider-inp {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 4px;
+  // border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+
+.slider-inp::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: $accent-color;
+  cursor: pointer;
+}
+
+.slider-inp::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: $accent-color;
+  cursor: pointer;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+.status {
+  padding: 3px 5px;
+}
+.status-red {
+  color: rgb(255, 0, 0);
+  background-color: rgba(255, 0, 0, 0.2);
+}
+.status-green {
+  color: rgb(0, 128, 0);
+  background-color: rgba(0, 128, 0, 0.2);
+}
+.status-orange {
+  color: rgb(255, 153, 0);
+  background-color: rgba(255, 153, 0, 0.2);
+}
+
+table {
+  border-collapse: collapse;
+  text-align: center;
+  width: 100%;
+}
+th,
+td {
+  padding: 8px 12px;
+}
+th {
+  position: sticky;
+  top: 0px;
+  background-color: $accent-color;
+  color: $prim-col-dark;
+}
+// tr:nth-child(even) {
+//   background-color: rgba($accent-color, 0.05);
+// }
+tr:hover {
+  background-color: rgba($accent-color, 0.1);
+}
+
+select {
+  appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -webkit-appearance: none;
+
+  padding: 12px 7px;
+  width: 100%;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+option {
+  text-transform: capitalize;
+}
+
+.temp {
+  padding: 6px;
+}
+
+.hover:hover {
+  background-color: rgba($accent-color, 0.2);
+}

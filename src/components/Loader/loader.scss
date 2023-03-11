@@ -1,0 +1,89 @@
+@import "../../App.scss";
+
+.temp {
+  width: 600px;
+  height: 600px;
+  margin: auto;
+}
+$count: 10;
+$time: 3; //in seconds
+$size: 80;
+$color: #ffffff;
+
+.loader-container {
+  position: relative;
+  left: 0px;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  width: 100%;
+  height: 100%;
+  // background-color: #2d2f48;
+}
+
+@keyframes rotatePreloader {
+  0% {
+    transform: translateX(-50%) translateY(-50%) rotateZ(0deg);
+  }
+  100% {
+    transform: translateX(-50%) translateY(-50%) rotateZ(-360deg);
+  }
+}
+
+.preloader {
+  /* size */
+  width: $size + px;
+  height: $size + px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  animation: rotatePreloader $time + s infinite ease-in;
+
+  > div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+  }
+}
+
+.preloader div:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0%;
+  width: 10%;
+  height: 10%;
+  background-color: $accent-color;
+  transform: translateX(-50%);
+  border-radius: 50%;
+}
+
+@for $i from 1 through $count {
+  .preloader div:nth-child(#{$i}) {
+    transform: rotateZ(calc(((360 / $count) * ($i - 1))) + deg);
+    animation: rotateCircle + $i $time + s infinite linear;
+    z-index: $count - $i;
+  }
+  @keyframes rotateCircle#{$i} {
+    #{percentage(calc(((50 / $count)  * ($i - 1)) / 100))} {
+      opacity: 0;
+    }
+
+    #{percentage(calc((((50 / $count) + 0.0001) * ($i - 1)) / 100))} {
+      opacity: 0;
+      transform: rotateZ(calc((0 - ((360 / $count) * ($i - 2)))) + deg);
+    }
+    #{percentage(calc((((50 / $count) * ($i - 0)) + 2) / 100))} {
+      transform: rotateZ(calc((0 - ((360 / $count) * ($i - 1)))) + deg);
+    }
+    #{percentage(calc(((50 + ((50 / $count) * ($i - 0))) + 2) / 100))} {
+      transform: rotateZ(calc((0 - ((360 / $count) * ($i - 1)))) + deg);
+    }
+    100% {
+      transform: rotateZ(calc((0 - ((360 / $count) * ($count - 1)))) + deg);
+      opacity: 1;
+    }
+  }
+}

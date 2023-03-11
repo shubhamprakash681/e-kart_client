@@ -1,0 +1,61 @@
+@import "../../App.scss";
+
+.product-box-cont {
+  padding: 50px 22px;
+
+  > span > h1 {
+    padding: 6px;
+    width: max-content;
+    // margin: auto;
+    border-bottom: 2px solid $accent-color;
+  }
+}
+
+.home-loader-cont {
+  height: 200px;
+}
+.fet-prod-empty {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+
+  > span {
+    font-size: 1.3rem;
+  }
+}
+
+.pr-cont {
+  display: grid;
+  gap: 70px 40px;
+  grid-template-columns: repeat(auto-fill, 250px);
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 22px 0;
+}
+
+.product-card-container {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  width: 100%;
+  height: 300px;
+  transition: all 200ms;
+
+  > img {
+    width: 100%;
+    border-radius: 5px;
+  }
+}
+
+.product-card-container:hover {
+  transform: scale(102%);
+}
+
+.price-tag {
+  color: $accent-color;
+}

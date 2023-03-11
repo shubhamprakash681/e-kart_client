@@ -1,0 +1,29 @@
+@import "../../App.scss";
+
+.user-menu-container {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  position: absolute;
+  top: 76px;
+  right: 0;
+  padding: 12px;
+  margin: 0;
+
+  > * {
+    width: 100%;
+    padding: 12px;
+  }
+}
+
+.user-menu-container-small {
+  padding: 12px 0;
+  display: flex;
+  flex-direction: column;
+  top: 0px;
+
+  > * {
+    width: 100%;
+    padding: 12px;
+  }
+}

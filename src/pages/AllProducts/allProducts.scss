@@ -1,0 +1,121 @@
+@import "../../App.scss";
+
+.all-product-container {
+  height: calc(100dvh - $navbar-height);
+  display: grid;
+  grid-template-columns: 275px 1fr;
+  overflow: hidden;
+
+  > div {
+    height: 100%;
+  }
+}
+
+.all-prod-lab {
+  display: flex;
+  justify-content: center;
+  padding: 24px 0;
+
+  > span {
+    font-size: 2.3rem;
+    padding: 4px 15px;
+    border-bottom: 2px solid $accent-color;
+  }
+}
+
+.all-prods-cont {
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100dvh - $navbar-height);
+
+  > div {
+    width: 100%;
+  }
+}
+.all-prod-cont-top {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.no-prod-av {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 1.5rem;
+}
+
+#all-prod-pag-cont {
+  padding: 50px 0;
+  width: 100%;
+}
+
+.filter-header {
+  display: flex;
+  align-items: center;
+}
+.filter-hed-lab {
+  font-weight: bold;
+  font-size: 1.8rem;
+  width: 100%;
+  text-align: center;
+}
+.filter-box {
+  padding: 40px 6px 12px 30px;
+  overflow-y: auto;
+
+  > div {
+    margin: 30px 0;
+
+    > div {
+      margin: 5px 0;
+    }
+  }
+}
+
+.f-label {
+  font-size: 1.4rem;
+}
+
+.open-fil-btn-div {
+  padding: 40px 0;
+
+  > span {
+    display: inline-flex;
+    padding: 12px;
+    border-radius: 0 10px 10px 0;
+    cursor: pointer;
+    background-color: rgba($color: $accent-color, $alpha: 0.4);
+  }
+}
+.rating-slider-lab {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cat-options {
+  margin: 2px;
+}
+#selected-cat {
+  border: 1px solid $accent-color;
+  background-color: rgba($color: $accent-color, $alpha: 0.1);
+}
+
+@media screen and (max-width: 860px) {
+  .all-product-container {
+    grid-template-columns: 60px 1fr;
+    overflow-x: auto;
+  }
+
+  .filter-box {
+    padding: 0 13px;
+    padding-top: 100px;
+    width: 300px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 20;
+    height: calc(100dvh - $navbar-height);
+    box-shadow: 0 0 3px 1px rgba($color: $accent-color, $alpha: 1);
+  }
+}

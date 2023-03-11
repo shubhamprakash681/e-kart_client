@@ -1,0 +1,271 @@
+@import "../../App.scss";
+
+.order-flow-cont {
+  padding: 21px 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  > div {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 12px;
+  }
+  > span {
+    width: 100%;
+    border: 1px solid $accent-color;
+  }
+}
+.order-flow-active {
+  color: $accent-color;
+}
+
+.shipping-container,
+.payment-page-cont,
+.order-suc-cont,
+.all-orders-cont,
+.order-det-cont {
+  box-sizing: border-box;
+  width: 100%;
+  height: calc(100% - $navbar-height);
+}
+
+.shipping-form-cont {
+  box-sizing: border-box;
+  height: calc(100% - 105px);
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+}
+
+.conf-ord-det {
+  width: 100%;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 0.6fr 0.4fr;
+
+  > div {
+    padding: 3rem 1.5rem;
+  }
+}
+.conf-ord-det-l {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid gray;
+}
+
+.conf-ord-det-l-shipping {
+  margin-bottom: 30px;
+  > div {
+    padding: 4px;
+    padding-left: 40px;
+  }
+}
+
+.conf-order-shipping-address {
+  text-transform: capitalize;
+}
+
+.conf-ord-det-l-prods {
+  max-width: 875px;
+
+  > h2 {
+    padding: 5px 0;
+  }
+
+  > div {
+    max-height: 50dvh;
+    padding: 12px;
+    overflow-y: auto;
+    box-shadow: 0 0 1px 1px gray;
+    border-radius: 3px;
+  }
+}
+
+.ord-prod-card-cont {
+  min-width: 400px;
+  display: flex;
+  align-items: center;
+  border: 1px solid $accent-color;
+  border-radius: 5px;
+  margin: 7px 0;
+  padding: 7px;
+
+  > img {
+    width: 50px;
+  }
+
+  > div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.order-summary {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 3px;
+  padding: 21px;
+  margin: auto;
+
+  > * {
+    margin: 11px 0;
+  }
+
+  > h3 {
+    padding: 7px;
+    border-bottom: 2px solid gray;
+  }
+
+  > div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+.ord-sum-sep {
+  border: 1px solid gray;
+}
+.ord-sum-bot {
+  color: $accent-color;
+}
+
+.payment-det-form-cnt {
+  width: 100%;
+  height: calc(100dvh - $navbar-height);
+  display: flex;
+  justify-content: space-evenly;
+
+  > div {
+    width: 600px;
+    margin-top: 8vh;
+  }
+}
+
+.payment-inputs {
+  width: 100%;
+  padding: 12px;
+}
+
+.order-suc-cont {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: rgba(0, 0, 0, 0.158);
+}
+.order-suc-inner {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 500px;
+  border-radius: 12px;
+  text-align: center;
+
+  > * {
+    margin: 12px 0;
+  }
+}
+
+.all-orders-cont {
+  display: flex;
+  justify-content: space-evenly;
+
+  > div {
+    margin: 30px;
+    width: 100%;
+    overflow-x: auto;
+  }
+}
+
+.order-det-cont {
+  padding: 18px;
+  overflow: auto;
+}
+.order-det-id-cont {
+  display: flex;
+  padding: 21px 0;
+  align-items: center;
+
+  > div {
+    color: $accent-color;
+  }
+}
+.order-id {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.order-status {
+  padding: 3px 7px;
+  margin-left: 7px;
+  text-transform: capitalize;
+}
+
+.all-order-empty {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  text-align: center;
+  font-size: larger;
+
+  > div {
+    > * {
+      padding: 20px 0;
+    }
+  }
+}
+@media screen and (max-width: 720px) {
+  .order-flow-cont {
+    padding: 21px;
+  }
+}
+
+@media screen and (max-width: 970px) {
+  .conf-ord-det {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .conf-ord-det-l {
+    border: none;
+  }
+
+  .conf-ord-det-r {
+    min-height: 520px;
+    overflow-x: auto;
+    border-top: 1px solid gray;
+  }
+
+  .all-orders-cont > div {
+    margin: 2px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .conf-ord-det {
+    > div {
+      padding: 3rem 7px;
+    }
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .order-det-id-cont {
+    flex-direction: column;
+    align-items: flex-start;
+    overflow-x: auto;
+  }
+  .order-status {
+    margin-left: 0;
+  }
+
+  .order-det-cont {
+    padding: 18px 4px;
+  }
+}

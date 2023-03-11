@@ -1,0 +1,10 @@
+.avatar-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+
+  > img {
+    border-radius: 50%;
+  }
+}

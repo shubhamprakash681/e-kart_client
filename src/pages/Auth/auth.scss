@@ -1,0 +1,89 @@
+@import "../../App.scss";
+
+.auth-form-container {
+  width: 100%;
+  height: calc(100% - $navbar-height);
+  box-sizing: border-box;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+}
+
+.form-conatiner {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  // box-shadow: 0 0 10px rgba($accent-color, 0.4);
+  border-radius: 3px;
+  margin: auto;
+
+  > * {
+    margin: 12px 0;
+  }
+
+  > div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  > div > input {
+    padding: 12px 4px;
+    min-width: 271px;
+    width: 100%;
+    border: none;
+    outline: none;
+  }
+}
+.login-form {
+  width: 400px;
+}
+
+.auth-input-container {
+  border: 1px solid $accent-color;
+  border-radius: 3px;
+  padding: 0 0 0 6px;
+
+  > span {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 0;
+  }
+}
+
+.form-header {
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 42px;
+}
+.fgt-pswd-btn,
+.change-auth-type {
+  align-self: flex-end;
+}
+.change-auth-type {
+  margin: 0;
+  font-size: large;
+}
+
+.form-sub-btn {
+  font-size: 1.8rem;
+  margin-top: 24px;
+}
+
+.auth-input-container:active {
+  border: 2px solid $accent-color;
+}
+
+@media screen and (max-width: 500px) {
+  .auth-form-container {
+    padding: 24px 0;
+  }
+
+  .form-conatiner {
+    padding: 30px 10px;
+  }
+}
