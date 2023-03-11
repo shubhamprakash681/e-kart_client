@@ -1,11 +1,25 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar/Avatar";
 import Loader from "../../components/Loader/Loader";
 
 const UserProfile = () => {
+  const dispatch = useDispatch();
   const { user, loading } = useSelector((state) => state.userReducer);
+  const [joiningDate, setJoiningDate] = useState(null);
+
+  useEffect(() => {
+    if (user) {
+      const jd = new Date(user.user.joiningDate);
+      const day = jd.getDate();
+      const month = jd.getMonth();
+      const yr = jd.getFullYear();
+
+      setJoiningDate(`${day}/${month}/${yr}`);
+    }
+  }, [dispatch, user]);
+
   return (
     <>
       <div className="user-prof-cont">
@@ -32,7 +46,7 @@ const UserProfile = () => {
 
                     <div className="user-prof-com">
                       <h2>Joined On: </h2>
-                      <span>{user.user.name}</span>
+                      <span>{joiningDate}</span>
                     </div>
                   </div>
 

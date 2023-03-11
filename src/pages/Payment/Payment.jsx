@@ -10,7 +10,7 @@ import {
 } from "@stripe/react-stripe-js";
 import { useDispatch, useSelector } from "react-redux";
 import { makePayment } from "../../actions/paymentActions";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Payment = () => {
   const stripe = useStripe();
@@ -49,6 +49,10 @@ const Payment = () => {
         <div>
           <form className="form-conatiner" onSubmit={submitHandler}>
             <span className="form-header form-header-user">Card Details</span>
+
+            <Link to={"https://stripe.com/docs/testing"} target="_blank">
+              Click on ths link to get a virtual card for making payment
+            </Link>
 
             <div className="auth-input-container">
               <span>
