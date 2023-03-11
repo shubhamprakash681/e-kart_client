@@ -62,6 +62,13 @@
   padding: 30px 30px 30px 80px;
   position: absolute;
   top: 77px;
+
+  display: flex;
+  flex-direction: column;
+
+  > h1 {
+    text-align: center;
+  }
 }
 
 .dash-side-sub-menus {

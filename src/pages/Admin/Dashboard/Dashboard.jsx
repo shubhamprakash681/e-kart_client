@@ -29,7 +29,9 @@ const Dashboard = () => {
           <>
             <OpenSidebarBtn setOpenSidebar={setOpenSidebar} />
 
-            <div className={`dash-content-holder`}>HI</div>
+            <div className={`dash-content-holder`}>
+              <h1>Admin Dashboard</h1>
+            </div>
           </>
         )}
       </div>

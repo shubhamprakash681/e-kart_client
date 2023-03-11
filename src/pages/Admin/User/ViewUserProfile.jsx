@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getUserDetailsAdmin } from "../../../actions/Admin/adminUserActions";
@@ -8,6 +8,7 @@ import Loader from "../../../components/Loader/Loader";
 const ViewUserProfile = () => {
   const dispatch = useDispatch();
   const params = useParams();
+  const [joiningDate, setJoiningDate] = useState(null);
 
   const { loading, user } = useSelector(
     (state) => state.adminReducer.userDetail
@@ -16,6 +17,17 @@ const ViewUserProfile = () => {
   useEffect(() => {
     dispatch(getUserDetailsAdmin(params.id));
   }, [dispatch, params.id]);
+
+  useEffect(() => {
+    if (user) {
+      const jd = new Date(user.joiningDate);
+      const day = jd.getDate();
+      const month = jd.getMonth();
+      const yr = jd.getFullYear();
+
+      setJoiningDate(`${day}/${month}/${yr}`);
+    }
+  }, [dispatch, user, params.id]);
 
   return (
     <div className="user-prof-cont">
@@ -42,7 +54,7 @@ const ViewUserProfile = () => {
 
                   <div className="user-prof-com">
                     <h2>Joined On: </h2>
-                    <span>{user.name}</span>
+                    <span>{joiningDate}</span>
                   </div>
                 </div>
               </div>
