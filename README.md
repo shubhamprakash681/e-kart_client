@@ -1,13 +1,7 @@
 # To see the live demo of this project, click on the link below:-
-<<<<<<< HEAD
-[E-Kart Live Demo](https://e-kart-client.vercel.app/)
-
-
-=======
 
 [E-Kart Live Demo](https://e-kart-client.vercel.app/)
 
->>>>>>> 777a203 (first commit)
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
