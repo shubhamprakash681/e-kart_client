@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { TbBrandProducthunt } from "react-icons/tb";
 import { HiOutlineCurrencyRupee } from "react-icons/hi";
 import { BiCategory } from "react-icons/bi";
-import { MdOutlineDescription, MdOutlineAdUnits } from "react-icons/md";
+import { MdOutlineAdUnits } from "react-icons/md";
 import {
   createProduct,
   getProdDetailsAdmin,
@@ -13,6 +13,7 @@ import Loader from "../../../components/Loader/Loader";
 import { getCategoryList } from "../../../actions/productActions";
 import { useParams } from "react-router-dom";
 import { urlToObject } from "../../../utils/cloudinary";
+import DescriptionModal from "./DescriptionModal";
 
 const CreateProduct = ({ isUpdate = false }) => {
   const dispatch = useDispatch();
@@ -32,15 +33,51 @@ const CreateProduct = ({ isUpdate = false }) => {
   useEffect(() => {
     if (isUpdate) {
       if (product) {
+        let newData = {};
         let tempImgsFiles = [];
         let tempImages = [];
+        let counter = product.product.images.length;
 
         product.product.images.forEach(async (img) => {
           const imgFile = await urlToObject(img.url);
           tempImages = [...tempImages, imgFile];
           tempImgsFiles = [...tempImgsFiles, URL.createObjectURL(imgFile)];
           setImageFiles(tempImgsFiles);
-          setData({ ...product.product, images: tempImages });
+          newData = { ...product.product, images: tempImages };
+
+          counter -= 1;
+
+          if (counter === 0) {
+            let cnt = product.product.productDescription.length;
+            let newDes = [];
+            product.product.productDescription.forEach(async (des) => {
+              if (des.image) {
+                const imgFile = await urlToObject(des.image.url);
+
+                newDes = [
+                  ...newDes,
+                  {
+                    ...des,
+                    image: imgFile,
+                    newProdDesImgPrev: URL.createObjectURL(imgFile),
+                  },
+                ];
+              } else {
+                newDes = [
+                  ...newDes,
+                  {
+                    ...des,
+                  },
+                ];
+              }
+
+              cnt -= 1;
+
+              if (cnt === 0) {
+                setData({ ...newData, productDescription: newDes });
+              }
+            });
+          }
         });
       }
     }
@@ -50,7 +87,7 @@ const CreateProduct = ({ isUpdate = false }) => {
     name: "",
     price: "",
     category: "",
-    productDescription: "",
+    productDescription: [],
     stock: "",
     images: [],
   });
@@ -59,6 +96,7 @@ const CreateProduct = ({ isUpdate = false }) => {
   const { uiTheme } = useSelector((state) => state.uiReducer);
   const { categoryList } = useSelector((state) => state.allProducts);
   const { loading } = useSelector((state) => state.adminReducer.createProd);
+  const [openDesModal, setOpenDesModal] = useState(false);
 
   const [newCat, setNewCat] = useState(false);
   const catChangeHandler = (e) => {
@@ -120,8 +158,8 @@ const CreateProduct = ({ isUpdate = false }) => {
 
   return (
     <>
-      {/* {console.log(data)}
-      {console.log("imageFiles: ", imageFiles)} */}
+      {/* {console.log(data)} */}
+      {/* {console.log("imageFiles: ", imageFiles)} */}
       <div className="create-prod-cont">
         {loading ? (
           <Loader />
@@ -200,21 +238,6 @@ const CreateProduct = ({ isUpdate = false }) => {
 
             <div className={`auth-input-container`}>
               <span>
-                <MdOutlineDescription size={"1.4rem"} />
-              </span>
-              <textarea
-                name="productDescription"
-                id="productDescription"
-                value={data.productDescription}
-                className={`${uiTheme} prod-desc`}
-                required
-                placeholder="Enter Product Description"
-                onChange={changeHandler}
-              />
-            </div>
-
-            <div className={`auth-input-container`}>
-              <span>
                 <MdOutlineAdUnits size={"1.4rem"} />
               </span>
               <input
@@ -253,6 +276,25 @@ const CreateProduct = ({ isUpdate = false }) => {
                   ))}
                 </div>
               </div>
+            )}
+
+            <div
+              className={`auth-input-container`}
+              id={"prod-des-btn-cont"}
+              onClick={() => setOpenDesModal(true)}
+            >
+              <button className="btn-outline" id={"prod-des-btn"}>
+                Enter Product Description
+              </button>
+            </div>
+
+            {openDesModal && (
+              <DescriptionModal
+                isUpdate={isUpdate}
+                setOpenDesModal={setOpenDesModal}
+                data={data}
+                setData={setData}
+              />
             )}
 
             <button type="submit" className="btn-solid form-sub-btn ">

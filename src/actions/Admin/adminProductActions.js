@@ -65,7 +65,7 @@ export const getProdDetailsAdmin = (id) => async (dispatch) => {
 };
 
 export const createProduct =
-  (name, price, category, productDescription, stock, images = []) =>
+  (name, price, category, productDescription = [], stock, images = []) =>
   async (dispatch) => {
     try {
       dispatch({
@@ -74,6 +74,7 @@ export const createProduct =
 
       let imageLinks = [];
       let count = images.length;
+      let prodDesCount = productDescription.length;
 
       images.forEach(async (img) => {
         const temp_cloudImg = await getCloudImgURI(img, 720);
@@ -81,29 +82,57 @@ export const createProduct =
 
         count -= 1;
         if (count === 0) {
-          await axios.post(
-            `${ServerBaseURI}/api/v1/product/new`,
-            {
-              name,
-              price,
-              category,
-              productDescription,
-              stock,
-              images: imageLinks,
-            },
-            { withCredentials: true }
-          );
+          let prodDes = [];
 
-          dispatch({
-            type: "ADMIN_CREATE_PRODUCT_SUC",
+          productDescription.forEach(async (des) => {
+            if (des.image) {
+              const cloudTmpLink = await getCloudImgURI(img, 480);
+
+              prodDes = [
+                ...prodDes,
+                {
+                  title: des.title,
+                  description: des.description,
+                  image: cloudTmpLink.data.secure_url,
+                },
+              ];
+            } else {
+              prodDes = [
+                ...prodDes,
+                {
+                  title: des.title,
+                  description: des.description,
+                },
+              ];
+            }
+            prodDesCount -= 1;
+
+            if (prodDesCount === 0) {
+              await axios.post(
+                `${ServerBaseURI}/api/v1/product/new`,
+                {
+                  name,
+                  price,
+                  category,
+                  productDescription: prodDes,
+                  stock,
+                  images: imageLinks,
+                },
+                { withCredentials: true }
+              );
+
+              dispatch({
+                type: "ADMIN_CREATE_PRODUCT_SUC",
+              });
+
+              toast.success("Product Created Successfully", {
+                toastId: "prod-cr-suc",
+                position: "bottom-center",
+              });
+
+              dispatch(getCategoryList());
+            }
           });
-
-          toast.success("Product Created Successfully", {
-            toastId: "prod-cr-suc",
-            position: "bottom-center",
-          });
-
-          dispatch(getCategoryList());
         }
       });
     } catch (err) {
@@ -122,7 +151,7 @@ export const createProduct =
   };
 
 export const updateProduct =
-  (name, price, category, productDescription, stock, images = [], id) =>
+  (name, price, category, productDescription = [], stock, images = [], id) =>
   async (dispatch) => {
     try {
       dispatch({
@@ -131,37 +160,67 @@ export const updateProduct =
 
       let imageLinks = [];
       let count = images.length;
+      let prodDesCount = productDescription.length;
 
       images.forEach(async (img) => {
         const temp_cloudImg = await getCloudImgURI(img, 720);
         imageLinks = [...imageLinks, temp_cloudImg.data.secure_url];
 
         count -= 1;
+
         if (count === 0) {
-          const { data } = await axios.put(
-            `${ServerBaseURI}/api/v1/product/${id}`,
-            {
-              name,
-              price,
-              category,
-              productDescription,
-              stock,
-              images: imageLinks,
-            },
-            { withCredentials: true }
-          );
+          let prodDes = [];
 
-          dispatch({
-            type: "ADMIN_UPDATE_PRODUCT_SUC",
-            payload: data,
+          productDescription.forEach(async (des) => {
+            if (des.image) {
+              const cloudTmpLink = await getCloudImgURI(img, 480);
+
+              prodDes = [
+                ...prodDes,
+                {
+                  title: des.title,
+                  description: des.description,
+                  image: cloudTmpLink.data.secure_url,
+                },
+              ];
+            } else {
+              prodDes = [
+                ...prodDes,
+                {
+                  title: des.title,
+                  description: des.description,
+                },
+              ];
+            }
+            prodDesCount -= 1;
+
+            if (prodDesCount === 0) {
+              const { data } = await axios.put(
+                `${ServerBaseURI}/api/v1/product/${id}`,
+                {
+                  name,
+                  price,
+                  category,
+                  productDescription: prodDes,
+                  stock,
+                  images: imageLinks,
+                },
+                { withCredentials: true }
+              );
+
+              dispatch({
+                type: "ADMIN_UPDATE_PRODUCT_SUC",
+                payload: data,
+              });
+
+              toast.success(data.message, {
+                toastId: "prod-cr-suc",
+                position: "bottom-center",
+              });
+
+              dispatch(getCategoryList());
+            }
           });
-
-          toast.success(data.message, {
-            toastId: "prod-cr-suc",
-            position: "bottom-center",
-          });
-
-          dispatch(getCategoryList());
         }
       });
     } catch (err) {
@@ -171,7 +230,6 @@ export const updateProduct =
         toastId: message,
         position: "bottom-center",
       });
-      console.log("here");
 
       dispatch({
         type: "ADMIN_UPDATE_PRODUCT_FAIL",

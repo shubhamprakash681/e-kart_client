@@ -40,11 +40,21 @@
   overflow: auto;
 }
 
+#prod-des-btn {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+#prod-des-btn-cont {
+  padding: 0;
+  border: 0;
+}
+
 .prod-desc {
   width: 100%;
-  // resize: vertical;
+  resize: vertical;
   outline: none;
-  min-width: 271px;
+  min-height: 60px;
   border: none;
   padding: 4px;
   border-radius: 4px;
@@ -99,8 +109,150 @@
   justify-content: space-evenly;
 }
 
+.des-modal-outer {
+  height: 100dvh;
+  width: 100vw;
+  position: absolute;
+  left: 0;
+  top: -12px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.des-modal-main {
+  height: calc(100% - $navbar-height);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+  background-color: rgba(100, 100, 100, 0.699);
+}
+
+.des-modal-inner {
+  height: 92%;
+  width: 98vw;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.des-mod-header {
+  padding: 4px;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 0 2px 2px gray;
+
+  > span {
+    display: inline-flex;
+    align-items: center;
+    font-size: larger;
+  }
+}
+
+.des-modal-cont {
+  height: calc(100% - 46px);
+  display: grid;
+  grid-template-columns: 1fr 475px;
+
+  > div {
+    display: flex;
+    align-items: center;
+  }
+}
+
+#des-modal-inp-form {
+  width: 600px;
+
+  > h2 {
+    margin-bottom: 40px;
+  }
+}
+
+#des-modal-des-preview {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.des-modal-des-preview-inner {
+  padding: 12px;
+  max-height: 60dvh;
+  overflow-y: auto;
+
+  > h2 {
+    margin-bottom: 30px;
+    text-align: center;
+  }
+}
+
+.des-prev-card-con {
+  width: 100%;
+}
+
+.des-prev-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  > h3 {
+    width: 70%;
+    display: inline-flex;
+    text-align: center;
+  }
+  > img {
+    width: 90px;
+  }
+}
+
+.des-modal-des-preview-inner {
+  width: 475px;
+}
+
+.des-prev-card-con {
+  padding: 7px;
+  margin: 18px 0;
+  border-radius: 4px;
+  border: 1px solid $accent-color;
+}
+.des-prev-des {
+  height: 75px;
+  overflow-y: auto;
+}
+
+.prod-des-prev-empty {
+  text-align: center;
+}
+
+.des-prev-del-btn {
+  position: relative;
+  top: -12px;
+  right: -8px;
+}
+
+.des-sub-btn-cont {
+  display: flex;
+  justify-content: flex-end;
+}
+
 @media screen and (max-width: 720px) {
   .admin-prod-rev-cont {
     padding: 12px 0;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .des-modal-cont {
+    display: flex;
+    flex-direction: column;
+
+    overflow-y: auto;
+    justify-content: flex-start;
+  }
+}
+
+@media screen and (min-width: 2160px) {
+  .des-modal-cont {
+    grid-template-columns: 1fr 1fr;
   }
 }

@@ -9,6 +9,7 @@ import { getProductDetail } from "../../actions/productActions";
 import Loader from "../../components/Loader/Loader";
 import ReviewCard from "../../components/Products/ReviewCard";
 import CreateReviewModal from "./CreateReviewModal";
+import ProductDescriptionCard from "./ProductDescriptionCard";
 import "./productDetails.scss";
 
 const ProductDetails = () => {
@@ -180,8 +181,6 @@ const ProductDetails = () => {
                     </div>
 
                     <div className="prod-det-des">
-                      <h3>Description:</h3>
-                      <p>{productDet.productDescription}</p>
                       <button
                         onClick={() => setOpenCreateRevModal(true)}
                         className="btn-outline"
@@ -191,6 +190,21 @@ const ProductDetails = () => {
                     </div>
                   </div>
                 </div>
+              </div>
+
+              <div className="prod-det-des-cont">
+                <div className="prod-det-rev-lab-con">
+                  <span className="prod-det-rev-lab">Product Description</span>
+                </div>
+
+                {productDet.productDescription &&
+                  productDet.productDescription.map((des, index) => (
+                    <ProductDescriptionCard
+                      key={index}
+                      description={des}
+                      isReverse={index % 2 !== 0}
+                    />
+                  ))}
               </div>
 
               <div className="prod-det-rev-cont">
